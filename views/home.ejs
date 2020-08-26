@@ -1,23 +1,19 @@
-<%- include('partials/header.ejs'); -%>
 
-<h1>Home</h1>
-<div class>
-  <p><%= startingContent%></p>
-  <a href="/compose">Compose new Post</a>
-  <div>
-    <% allPosts.forEach(function(post) {%>
-    <div class="">
-      <h2><%= post.title %></h2>
-      <p>
-        <%= post.content.substring(0,50) + " ..." %>
-        <a href="posts/<%=post.title%>">Read More</a>
-      </p>
-      <%})%>
-
-    </div>
+<%- include("partials/header"); -%>
+    <h1>Home</h1>
+    <p> <%= startingContent %> </p>
 
 
+  <%  posts.forEach(function(post){ %>
 
-  </div>
+    <h1><%=post.title%></h1>
+    <p>
+    <%=post.content.substring(0, 100) + " ..."%>
+    <a href="/posts/<%=post._id%>">Read More</a>
+    </p>
 
-  <%- include('partials/footer.ejs'); -%>
+
+    <% }) %>
+    <a href="/compose">New post</a>
+
+<%- include("partials/footer"); -%>
